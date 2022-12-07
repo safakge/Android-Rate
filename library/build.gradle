@@ -1,12 +1,33 @@
+plugins {
+    id 'com.android.library' // Android Gradle Plugin 7.1.2
+    id 'maven-publish'
+}
+
 apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 32
-    buildToolsVersion '23.0.2'
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 32
     }
+    namespace 'hotchemi.android.rate'
 }
 
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+project.afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                artifact androidSourcesJar
+            }
+        }
+    }
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+//apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
