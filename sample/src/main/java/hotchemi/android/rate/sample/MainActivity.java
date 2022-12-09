@@ -1,6 +1,8 @@
 package hotchemi.android.rate.sample;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -33,6 +35,7 @@ public class MainActivity extends Activity {
                 .setTextLater(R.string.new_rate_dialog_later)
                 .setTextNever(R.string.new_rate_dialog_never)
                 .setTextRateNow(R.string.new_rate_dialog_ok)
+                .setCustomRateIntent(new Intent(Intent.ACTION_VIEW, Uri.parse("https://zombo.com/")))
                 .monitor();
 
         AppRate.showRateDialogIfMeetsConditions(this);

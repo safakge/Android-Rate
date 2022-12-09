@@ -1,6 +1,7 @@
 package hotchemi.android.rate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 import java.lang.ref.Reference;
@@ -41,6 +42,12 @@ final class DialogOptions {
     private View view;
 
     private Reference<OnClickButtonListener> listener;
+
+    private Intent customRateIntent = null;
+
+    public Intent getCustomRateIntent() { return customRateIntent; }
+
+    public void setCustomRateIntent(Intent intent) { customRateIntent = intent; }
 
     public boolean shouldShowNeutralButton() {
         return showNeutralButton;

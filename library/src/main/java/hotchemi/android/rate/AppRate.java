@@ -2,6 +2,7 @@ package hotchemi.android.rate;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 import java.util.Date;
@@ -55,6 +56,11 @@ public final class AppRate {
 
     private static boolean isOverDate(long targetDate, int threshold) {
         return new Date().getTime() - targetDate >= threshold * 24 * 60 * 60 * 1000;
+    }
+
+    public AppRate setCustomRateIntent(Intent intent) {
+        options.setCustomRateIntent(intent);
+        return this;
     }
 
     public AppRate setLaunchTimes(int launchTimes) {
