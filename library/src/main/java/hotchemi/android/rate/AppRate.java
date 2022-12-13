@@ -63,6 +63,11 @@ public final class AppRate {
         return this;
     }
 
+    public AppRate setCustomRateAction(Runnable action) {
+        options.setCustomRateAction(action);
+        return this;
+    }
+
     public AppRate setLaunchTimes(int launchTimes) {
         this.launchTimes = launchTimes;
         return this;

@@ -45,9 +45,21 @@ final class DialogOptions {
 
     private Intent customRateIntent = null;
 
+    private Runnable customRateAction = null;
+
     public Intent getCustomRateIntent() { return customRateIntent; }
 
-    public void setCustomRateIntent(Intent intent) { customRateIntent = intent; }
+    public void setCustomRateIntent(Intent intent) {
+        customRateIntent = intent;
+        customRateAction = null;
+    }
+
+    public Runnable getCustomRateAction() { return customRateAction; }
+
+    public void setCustomRateAction(Runnable action) {
+        customRateAction = action;
+        customRateIntent = null;
+    }
 
     public boolean shouldShowNeutralButton() {
         return showNeutralButton;

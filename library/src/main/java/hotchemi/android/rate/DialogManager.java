@@ -34,12 +34,17 @@ final class DialogManager {
         builder.setPositiveButton(options.getPositiveText(context), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intentToAppstore = options.getCustomRateIntent();
-                if (intentToAppstore == null) {
-                    intentToAppstore = options.getStoreType() == StoreType.GOOGLEPLAY ?
-                            createIntentForGooglePlay(context) : createIntentForAmazonAppstore(context);
+                Runnable customAction = options.getCustomRateAction(); // First, check for a custom action
+                if (customAction != null) {
+                    customAction.run(); // If there is one, run it
+                } else {
+                    Intent intentToAppstore = options.getCustomRateIntent(); // Then, check for a custom intent
+                    if (intentToAppstore == null) { // No action or intent, so use the default
+                        intentToAppstore = options.getStoreType() == StoreType.GOOGLEPLAY ?
+                                createIntentForGooglePlay(context) : createIntentForAmazonAppstore(context);
+                    }
+                    context.startActivity(intentToAppstore);
                 }
-                context.startActivity(intentToAppstore);
                 setAgreeShowDialog(context, false);
                 if (listener != null) listener.onClickButton(which);
             }
