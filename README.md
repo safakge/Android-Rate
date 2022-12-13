@@ -1,7 +1,7 @@
 Android-Rate
 ============
 
-[![Build Status](https://travis-ci.org/hotchemi/Android-Rate.png?branch=master)](https://travis-ci.org/hotchemi/Android-Rate)
+[![](https://jitpack.io/v/safakge/Android-Rate.svg)](https://jitpack.io/#safakge/Android-Rate)
 
 Android-Rate is a library to help you promote your android app by prompting users to rate the app after using it for a few days.
 
